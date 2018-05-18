@@ -1,6 +1,6 @@
 $(function() {
     window.onscroll = function() {
-        scroller();
+        navHook();
         navigator();
     };
 
@@ -14,15 +14,14 @@ $(function() {
     var $pagelinks = $('.navigation');
     var $hamburger = $('.socials .hamburger');
     var navLinks = [$nHome, $nAbout, $nBlog, $nTeam, $nContact];
-
-    var aboutPosition = $('.about').position().top;
-    var blogPosition = $('.blog').position().top;
-    var teamPosition = $('.team').position().top;
-    var contactPosition = $('.contact').position().top;
+    var $sAbout = $('.about');
+    var $sBlog = $('.blog');
+    var $sTeam = $('.team');
+    var $sContact = $('.contact');
 
     var sticky = $navbar.offset().top;
 
-    function scroller() {
+    function navHook() {
         if ((window.pageYOffset >= sticky) && (!$navbar.hasClass('navColumn'))) {
             $navbar.addClass("sticky")
         } else {
@@ -31,12 +30,16 @@ $(function() {
     };
 
     function navigator() {
-        if (scrollY < aboutPosition) {
+        var aboutPosition = $sAbout.position().top - 360;
+        var blogPosition = $sBlog.position().top - 360;
+        var teamPosition = $sTeam.position().top - 360;
+        var contactPosition = $sContact.position().top - 360;
+        if (scrollY < (aboutPosition)) {
             $.each(navLinks, function(index, value) {
                 value.removeClass('active');
             });
             $nHome.addClass('active');
-        } else if (scrollY >= aboutPosition && scrollY < blogPosition) {
+        } else if (scrollY >= (aboutPosition) && scrollY < blogPosition) {
             $.each(navLinks, function(index, value) {
                 value.removeClass('active');
             });
@@ -58,67 +61,6 @@ $(function() {
             $nContact.addClass('active');
         }
     };
-    //window.onscroll()
-
-    $nHome.on('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-        $.each(navLinks, function(index, value) {
-            value.removeClass('active');
-        });
-        $nHome.addClass('active');
-    });
-
-    $nAbout.on('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: aboutPosition,
-            behavior: "smooth"
-        });
-        $.each(navLinks, function(index, value) {
-            value.removeClass('active');
-        });
-        $nAbout.addClass('active');
-    });
-
-    $nBlog.on('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: blogPosition,
-            behavior: "smooth"
-        });
-        $.each(navLinks, function(index, value) {
-            value.removeClass('active');
-        });
-        $nBlog.addClass('active');
-    });
-
-    $nTeam.on('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: teamPosition,
-            behavior: "smooth"
-        });
-        $.each(navLinks, function(index, value) {
-            value.removeClass('active');
-        });
-        $nTeam.addClass('active');
-    });
-
-    $nContact.on('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: contactPosition,
-            behavior: "smooth"
-        });
-        $.each(navLinks, function(index, value) {
-            value.removeClass('active');
-        });
-        $nContact.addClass('active');
-    });
 
     $hamburger.on('click', function() {
         $(this).toggleClass('open');
@@ -126,6 +68,52 @@ $(function() {
         $pagelinks.toggleClass('shown');
         $header.toggleClass('navPadding');
     });
-    
+
+    $nHome.on('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+            onAfter: navigator()
+        });
+    });
+
+    $nAbout.on('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: $sAbout.position().top,
+            behavior: "smooth",
+            onAfter: navigator()
+        });
+    });
+
+    $nBlog.on('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: $sBlog.position().top,
+            behavior: "smooth",
+            onAfter: navigator()
+        });
+    });
+
+    $nTeam.on('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: $sTeam.position().top,
+            behavior: "smooth",
+            onAfter: navigator()
+        });
+    });
+
+    $nContact.on('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: $sContact.position().top,
+            behavior: "smooth",
+            onAfter: navigator()
+        });
+    });
+
+    navHook();
     navigator();
 });

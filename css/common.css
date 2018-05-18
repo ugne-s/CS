@@ -65,7 +65,7 @@ textarea {
   background-color: rgba(0, 0, 0, 0.9);
 }
 .sticky + .container {
-  padding-top: 380px;
+  padding-top: 370px;
 }
 .sec-container {
   max-width: 1500px;

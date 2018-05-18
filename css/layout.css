@@ -129,8 +129,8 @@ body header .navbar .navcont .socials li a {
   }
 }
 body header .heading {
-  padding-top: 293px;
-  padding-bottom: 105px;
+  padding-top: 283px;
+  padding-bottom: 95px;
 }
 body header .heading h1 {
   font-family: "Gotham Bold", Arial;
@@ -144,7 +144,7 @@ body header .heading h3 {
   letter-spacing: 19px;
   line-height: 51px;
   color: #11749e;
-  padding-bottom: 100px;
+  padding-bottom: 95px;
 }
 body header .heading span {
   font-family: "Open Sans Regular", Arial;
