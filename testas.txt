@@ -1,0 +1,55 @@
+﻿1. Kokia žyma naudojama pridedant stiliaus (.css) failą į HTML dokumentą?
+	a) <style></style>
+	b) <link />
+	c) <css></css>
+2. Kuri iš pateiktų žymų dažniausiai apjuosia naršyklės ekrane matomą vaizdą?
+	a) <body></body>
+	b) <section></section>
+	c) <span></span>
+3. Kokia yra <div></div> žymos vaizdavimo (display) reikšmė pagal nutylėjimą?
+	a) block
+	b) inline-block
+	c) flex
+4. Kaip būtų sulygiuotas paragrafo tekstas jei HTML dokumente turėtume tik tokį CSS kodą?
+<style>
+	body {
+		text-align: right;
+	}
+	body p {
+		text-align: center;
+	}
+	p {
+		text-align: left;
+	}
+</style>
+	a) į dešinę
+	b) centre
+	c) į kairę
+5. Kokia sąlyga CSS nth-child() selektoriuje paima kas antrą elementą?
+	a) nth-child(2)
+	b) nth-child(2n)
+	c) nth-child(2+n)
+6. Koks yra atitraukimų eiliškumas elemento dydžio skaičiavime (box model)?
+	a) border - padding - margin
+	b) padding- border - margin
+	c) padding - margin - border
+7. Kuri savybė iš pateiktų žemiau nėra paveldima CSS?
+	a) width
+	b) font-size
+	c) color
+8. Kaip žymimi kintamieji naudojant LESS preprocesorių?
+	a) @kintamojo_vardas
+	b) $kintamojo_vardas
+	c) kintamojo vardas
+9. Kuris jQuery selektorius iš pateiktų ieško elemento su klase "elementas"?
+	a) $('#elementas');
+	b) $('.elementas');
+	c) $('elementas');
+10. Kokį masyvo elementą atspausdintų toks JavaScript kodas?
+<script>
+	var masyvas = ['dog', 'cat', 'cow', 'hare'];
+	alert(masyvas[1]);
+</script>
+	a) 'hare'
+	b) 'dog'
+	c) 'cat'
