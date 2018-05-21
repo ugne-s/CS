@@ -67,6 +67,19 @@ textarea {
 .sticky + .container {
   padding-top: 370px;
 }
+@media screen and (max-width: 600px) {
+  .sticky + .container {
+    padding-top: 208px;
+  }
+}
+.btnSticky {
+  z-index: 6;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .sec-container {
   max-width: 1500px;
   margin: 0 auto;
@@ -112,6 +125,16 @@ textarea {
     width: 50%;
     max-width: 50%;
     margin-bottom: 50px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .m-section .quartet {
+    flex-flow: column;
+    align-items: center;
+  }
+  .m-section .quartet .member {
+    width: 90%;
+    max-width: 100%;
   }
 }
 .bg_card {

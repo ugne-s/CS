@@ -21,30 +21,55 @@
 
 body {
     header {
+        position: relative;
+        padding-top: 1px;
         text-align: center;
-        background-image: url('images/headerbg.png');
+        background-image: url('images/headerbg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         &.navPadding { //toggled by hamburger.onclick
             padding-top: 87.8px; // regular navbar height
         }
-        .navbay {
-            padding-top: 25px;
+        button {
+            position: absolute;
+            z-index: 4;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 32px;
+            border: 1px solid #808080;
+            height: 65px;
+            width: 65px;
+            color: #f5f5f5;
+            background-color: rgba(0, 0, 0, 0);
+            &:hover {
+                border: 1px solid #ffffff;
+            }
         }
-        .navbar { // /
+        .navbar { //sticky (common)
             z-index: 6;
             padding-top: 5px;
             padding-bottom: 6px;
-            border-bottom: 1px inset gray;
+            border-bottom: 1px inset #808080;
             &.navColumn { //toggled by hamburger.onclick
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(0, 0, 0, 0.8);
+                img {
+                    position: absolute;
+                    top: 1px;
+                }
+                .socials {
+                    position: absolute;
+                    top: 28.4px;
+                    right: 15px;
+                }
             }
             .navcont {
+                height: 100%;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -74,16 +99,29 @@ body {
                     &.shown { //toggled by hamburger.onclick
                         display: flex;
                         flex-direction: column;
+                        align-items: stretch;
                         position: absolute;
-                        top: 80px;
-                        left: 50%;
-                        transform: translateX(-50%);
+                        top: 84px;
+                        bottom: 75px;
+                        right: 0;
+                        left: 0;
+                        //transform: translateX(-50%);
                         text-align: center;
                         li {
-                            margin: 10px;
-                            padding: 5px;
+                            height: 20%;
+                            margin-bottom: auto;
+                            padding: 0;
+                            margin: 0;
                             a {
-                                padding-bottom: 15px;
+                                display: block;
+                                height: 100%;
+                                padding: 6%;
+                                &:hover,
+                                &.active {
+                                    border-bottom:6px solid rgba(17, 115, 157, 0);
+                                    color: rgba(255, 255, 255, 0.8);
+                                    background-color: rgba(17, 115, 157, 0.4);
+                                }
                             }
                         }
                     }
@@ -91,6 +129,9 @@ body {
                 .socials {
                     li {
                         display: inline-block;
+                        i:hover {
+                            color: rgba(17, 115, 157, 0.8);
+                        }
                         &.hamburger {
                             margin-bottom:-2px;
                             margin-right: 10px;
@@ -102,17 +143,25 @@ body {
                                 margin-bottom: 4px;
                                 width: 18px;
                                 height: 4px;
-                                background-color: #11749e;
+                                background-color: #ffffff;
                                 transform: rotate(0);
                                 transition: 1s;
                                 &:last-child {
                                     margin-bottom: 0; 
                                 }
                             }
+                            &:hover {
+                                span {
+                                    background-color: #11749e;
+                                }
+                            }
                             &.open { //toggled by hamburger.onclick
                                 span {
                                     &.bar1 {
                                         background-color: rgba(0, 0, 0, 0);
+                                    }
+                                    &.bar2 {
+                                        background-color: #11749e;
                                     }
                                     &.bar3 {
                                         background-color: rgba(0, 0, 0, 0);
@@ -140,7 +189,7 @@ body {
         }
         .heading {
             padding-top: 283px; //250+43
-            padding-bottom: 95px;
+            padding-bottom: 160px;
             h1 {
                 font-family: "Gotham Bold", Arial;
                 font-size: 153px;
@@ -148,12 +197,12 @@ body {
                 color: #f5f5f5;
             }
             h3 {
+                padding-bottom: 95px;
                 font-family: "Gotham Medium", Arial;
                 font-size: 25px;
                 letter-spacing: 19px;
                 line-height: 51px;
                 color: #11749e;
-                padding-bottom: 95px;
             }
             span {
                 font-family: "Open Sans Regular", Arial;
@@ -161,35 +210,33 @@ body {
                 line-height: 22px;
                 color: #ffffff;
             }
-            button {
-                display: block;
-                margin: 10px auto;
-                border-radius: 32px;
-                border: 1px solid #7f7f7f;
-                height: 65px;
-                width: 65px;
-                color: #f5f5f5;
-                background-color: rgba(0, 0, 0, 0);
-                &:hover {
-                    border: 1px solid #ffffff;
-                }
-            }
             @media screen and (max-width: 900px) {
                 h1 {
-                    font-size: 120px;
+                    font-size: 122px;
+                }
+                h3 {
+                    font-size: 20px;
+                    letter-spacing: 16px;
                 }
             }
             @media screen and (max-width: 700px) {
                 h1 {
-                    font-size: 100px;
+                    font-size: 91px;
+                }
+                h3 {
+                    font-size: 15px;
+                    letter-spacing: 13px;
                 }
             }
             @media screen and (max-width: 600px) {
+                padding-top: 120px;
                 h1 {
-                    font-size: 80px;
+                    font-size: 60px;
                 }
                 h3 {
-                    font-size: 18px;
+                    font-size: 10px;
+                    padding-bottom: 80px;
+                    letter-spacing: 10px;
                 }
             }
         }
@@ -200,7 +247,7 @@ body {
             color: #ffffff;
             &:after {
                 content: "W";
-                color: rgba(255, 255, 255, 0.15);
+                color: rgba(255, 255, 255, 0.2);
                 @media screen and (max-width: 670px) {
                     top: 20%;
                 }
@@ -240,6 +287,9 @@ body {
                     padding: 10px 0 120px 0;
                     font-size: 15px;
                     line-height: 24px;
+                    @media screen and (max-width: 580px) {
+                        padding-bottom: 30px;
+                    }
                 }
             }
         }
@@ -251,7 +301,7 @@ body {
             &:after {
                 right: 0;
                 left: 50%;
-                background-image: url('images/news1bg.png');
+                background-image: url('images/news1bg.jpg');
                 @media screen and (max-width: 900px) {
                     left: 0;
                 }
@@ -269,7 +319,7 @@ body {
             padding-bottom: 110px;
             &:after {
                 content: "B";
-                color: rgba(34, 34, 34, 0.15);
+                color: rgba(34, 34, 34, 0.2);
             }
         }
         p {
@@ -296,6 +346,9 @@ body {
                     padding: 0 5px 110px 5px;
                     font-size: 15px;
                     line-height: 24px;
+                    @media screen and (max-width: 580px) {
+                        padding-bottom: 30px;
+                    }
                 }
             }
         }
@@ -307,7 +360,7 @@ body {
             &:after {
                 right: 50%;
                 left: 0;
-                background-image: url('images/news2bg.png');
+                background-image: url('images/news2bg.jpg');
                 @media screen and (max-width: 900px) {
                     right: 0;
                 }
@@ -353,7 +406,7 @@ body {
     }
     .contact { //+common .m-section
         padding-bottom: 120px;
-        background-image: url('images/contactbg.png');
+        background-image: url('images/contactbg.jpg');
         color: #ffffff;
         h3 {
             padding-bottom: 145px;
@@ -361,7 +414,7 @@ body {
             line-height: 40px;
             &:after {
                 content: "C";
-                color: rgba(255, 255, 255, 0.15);
+                color: rgba(255, 255, 255, 0.2);
                 @media screen and (max-width: 920px) {
                     top: 5%;
                 }
@@ -371,6 +424,7 @@ body {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            position: relative;
             input { //+common .form-cont
                 width: 30%;
             }
@@ -388,6 +442,56 @@ body {
                 background-color: #11739d;
                 font-family: "Gotham Medium", Arial;
                 color: #ffffff;
+                &:hover {
+                    color: #11739d;
+                    background-color: #ffffff;
+                }
+            }
+            label {
+                position: absolute;
+                font-size: 10px;
+                color: #ff0000;
+                &#name-error {
+                    top: 48px;
+                    left: 21px;
+                }
+                &#email-error {
+                    top: 48px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                &#message-error {
+                    top: 292px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                @media screen and (max-width: 500px) {
+                    &#name-error {
+                        top: 45px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    &#email-error {
+                        top: 104px;
+                    }
+                    &#message-error {
+                        top: 384px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+            @media screen and (max-width: 500px) {
+                flex-flow: column;
+                input {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                textarea {
+                    margin-top: 0;
+                    width: 100%;
+                    resize: none;
+                }
             }
         }
     }
@@ -399,7 +503,7 @@ body {
         background-color: #212121;
         font-size: 13px;
         letter-spacing: 0px;
-        line-height: 36px;
+        line-height: 45px;
         font-family: "Roboto", Arial;
         color: #ffffff;
         .container {
@@ -407,6 +511,10 @@ body {
             padding-bottom: 50px;
             display: flex;
             justify-content: space-between;
+            @media screen and (max-width: 530px) {
+                display: block;
+                text-align: center;
+            }
         }
     }
 }

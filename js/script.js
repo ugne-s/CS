@@ -1,6 +1,7 @@
 $(function() {
     window.onscroll = function() {
         navHook();
+        btnHook();
         navigator();
     };
 
@@ -14,18 +15,30 @@ $(function() {
     var $pagelinks = $('.navigation');
     var $hamburger = $('.socials .hamburger');
     var navLinks = [$nHome, $nAbout, $nBlog, $nTeam, $nContact];
+    var $scrollButton = $('.scroll-btn');
+    var $arrow = $('.scroll-btn i');
     var $sAbout = $('.about');
     var $sBlog = $('.blog');
     var $sTeam = $('.team');
     var $sContact = $('.contact');
+    var $form = $('#cForm');
 
     var sticky = $navbar.offset().top;
+    var btnSticky = $scrollButton.offset().top;
 
     function navHook() {
         if ((window.pageYOffset >= sticky) && (!$navbar.hasClass('navColumn'))) {
             $navbar.addClass("sticky")
         } else {
             $navbar.removeClass("sticky")
+        }
+    };
+
+    function btnHook() {
+        if (window.pageYOffset >= btnSticky) {
+            $scrollButton.addClass("btnSticky")
+        } else {
+            $scrollButton.removeClass("btnSticky")
         }
     };
 
@@ -60,6 +73,13 @@ $(function() {
             });
             $nContact.addClass('active');
         }
+        if (scrollY >= contactPosition) {
+            $arrow.removeClass('fa-angle-down');
+            $arrow.addClass('fa-angle-up');
+        } else {
+            $arrow.removeClass('fa-angle-up');
+            $arrow.addClass('fa-angle-down');
+        }
     };
 
     $hamburger.on('click', function() {
@@ -67,6 +87,46 @@ $(function() {
         $navbar.toggleClass('navColumn');
         $pagelinks.toggleClass('shown');
         $header.toggleClass('navPadding');
+        navHook();
+    });
+
+    $scrollButton.on('click', function(event) {
+        event.preventDefault();
+        var aboutPosition = $sAbout.position().top;
+        var blogPosition = $sBlog.position().top;
+        var teamPosition = $sTeam.position().top;
+        var contactPosition = $sContact.position().top;
+        if (scrollY < (aboutPosition)) {
+            window.scrollTo({
+                top: aboutPosition + 1,
+                behavior: "smooth",
+                onAfter: navigator()
+            });
+        } else if (scrollY >= (aboutPosition) && scrollY < blogPosition) {
+            window.scrollTo({
+                top: $sBlog.position().top + 1,
+                behavior: "smooth",
+                onAfter: navigator()
+            });
+        } else if (scrollY >= blogPosition && scrollY < teamPosition) {
+            window.scrollTo({
+                top: $sTeam.position().top + 1,
+                behavior: "smooth",
+                onAfter: navigator()
+            });
+        } else if (scrollY >= teamPosition && scrollY < contactPosition) {
+            window.scrollTo({
+                top: $sContact.position().top + 1,
+                behavior: "smooth",
+                onAfter: navigator()
+            });
+        } else if (scrollY >= contactPosition) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+                onAfter: navigator()
+            });
+        }
     });
 
     $nHome.on('click', function(event) {
@@ -115,5 +175,8 @@ $(function() {
     });
 
     navHook();
+    btnHook();
     navigator();
+    
+	$form.validate();
 });

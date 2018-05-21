@@ -68,6 +68,18 @@ input, textarea {
 
 .sticky + .container {
 	padding-top: 370px;
+	@media screen and (max-width: 600px) {
+		padding-top: 208px;
+	}
+}
+
+.btnSticky {
+	z-index: 6;
+	position: fixed;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .sec-container {
@@ -112,6 +124,14 @@ input, textarea {
 				width: 50%;
 				max-width: 50%;
 				margin-bottom: 50px;
+			}
+		}
+		@media screen and (max-width: 580px) {
+			flex-flow: column;
+			align-items: center;
+			.member {
+				width: 90%;
+				max-width: 100%;
 			}
 		}
 	}
