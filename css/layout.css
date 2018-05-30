@@ -29,22 +29,6 @@ body header {
 body header.navPadding {
   padding-top: 87.8px;
 }
-body header button {
-  position: absolute;
-  z-index: 4;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 32px;
-  border: 1px solid #808080;
-  height: 65px;
-  width: 65px;
-  color: #f5f5f5;
-  background-color: rgba(0, 0, 0, 0);
-}
-body header button:hover {
-  border: 1px solid #ffffff;
-}
 body header .navbar {
   z-index: 6;
   padding-top: 5px;
@@ -77,6 +61,7 @@ body header .navbar .navcont {
 }
 body header .navbar .navcont img {
   height: auto;
+  cursor: pointer;
 }
 body header .navbar .navcont .navigation li {
   display: inline-block;
@@ -113,9 +98,12 @@ body header .navbar .navcont .navigation.shown li {
   margin: 0;
 }
 body header .navbar .navcont .navigation.shown li a {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 100%;
-  padding: 6%;
+  padding: 0;
 }
 body header .navbar .navcont .navigation.shown li a:hover,
 body header .navbar .navcont .navigation.shown li a.active {
@@ -123,14 +111,17 @@ body header .navbar .navcont .navigation.shown li a.active {
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(17, 115, 157, 0.4);
 }
-body header .navbar .navcont .socials li {
-  display: inline-block;
+body header .navbar .navcont .socials {
+  margin-top: 3.5px;
+  display: flex;
+}
+body header .navbar .navcont .socials li i {
+  transition: 0.4s;
 }
 body header .navbar .navcont .socials li i:hover {
   color: rgba(17, 115, 157, 0.8);
 }
 body header .navbar .navcont .socials li.hamburger {
-  margin-bottom: -2px;
   margin-right: 10px;
   display: none;
   cursor: pointer;
@@ -143,7 +134,7 @@ body header .navbar .navcont .socials li.hamburger span {
   height: 4px;
   background-color: #ffffff;
   transform: rotate(0);
-  transition: 1s;
+  transition: 0.4s;
 }
 body header .navbar .navcont .socials li.hamburger span:last-child {
   margin-bottom: 0;
@@ -227,6 +218,28 @@ body header .heading span {
     font-size: 10px;
     padding-bottom: 80px;
     letter-spacing: 10px;
+  }
+}
+body header button {
+  position: absolute;
+  z-index: 4;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 32px;
+  border: 1px solid #808080;
+  height: 65px;
+  width: 65px;
+  color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.4s;
+}
+body header button:hover {
+  border: 2px solid #ffffff;
+}
+@media screen and (max-width: 900px) {
+  body header.navPadding {
+    padding-top: 91.8px;
   }
 }
 body .about {
@@ -432,6 +445,7 @@ body .contact form button {
   background-color: #11739d;
   font-family: "Gotham Medium", Arial;
   color: #ffffff;
+  transition: 0.4s;
 }
 body .contact form button:hover {
   color: #11739d;
@@ -440,7 +454,7 @@ body .contact form button:hover {
 body .contact form label {
   position: absolute;
   font-size: 10px;
-  color: #ff0000;
+  color: #f67e46;
 }
 body .contact form label#name-error {
   top: 48px;
@@ -452,21 +466,22 @@ body .contact form label#email-error {
   transform: translateX(-50%);
 }
 body .contact form label#message-error {
-  top: 292px;
+  top: 284px;
   left: 50%;
   transform: translateX(-50%);
 }
 @media screen and (max-width: 500px) {
   body .contact form label#name-error {
-    top: 45px;
+    top: 42px;
     left: 50%;
     transform: translateX(-50%);
   }
   body .contact form label#email-error {
-    top: 104px;
+    top: 101.5px;
+    width: 225px;
   }
   body .contact form label#message-error {
-    top: 384px;
+    top: 380px;
     left: 50%;
     transform: translateX(-50%);
   }

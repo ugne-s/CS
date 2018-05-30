@@ -19,10 +19,6 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
     </script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js">
-    </script>
     <script type="text/javascript" src="js/script.js"></script>
 
   </head>
@@ -32,7 +28,9 @@
   <header>
     <nav id="nav-bar" class="navbar">
       <div class="navcont container">
-        <img src="images/CS_logo.png">
+        <a href="./index.html">
+          <img src="images/CS_logo.png">
+        </a>
         <ul class="navigation">
           <li>
             <a id="nHome" href="#">Home</a>
@@ -88,7 +86,7 @@
       <i class="fas fa-angle-down"></i>
     </button>
   </header>
-  <section class="about m-section">
+  <section class="about m-section" id="about">
     <div class="container">
       <h3>WE ARE AN AWESOME AGENCY</h3>
       <div class="quartet">
@@ -234,32 +232,31 @@
   <section class="contact m-section">
     <div class="container">
       <h3>WE'D LOVE TO HEAR ABOUT YOUR PROJECT.</h3>
-      <form id="cForm" action="#" method="GET">
-        <input class="form-cont"
-          type="text"
-          name="name"
-          placeholder="Name"
-          data-rule-required="true"
-          data-msg-required="Your name is required."
-          data-msg-email="Please enter your name.">
-        <input class="form-cont"
-          type="text"
-          name="email"
-          placeholder="Email"
-          data-rule-email="true"
-          data-rule-required="true"
-          data-msg-required="Your email adress is required."
-          data-msg-email="Please enter your email adress.">
-        <input class="form-cont" type="text" name="phone" placeholder="Phone">
+      <form novalidate id="cForm" action="#" method="GET">
+          <input class="form-cont"
+            type="text"
+            name="name"
+            id="cName"
+            placeholder="Name">
+          <label for="name" id="name-error" class="error" aria-live="polite"></label>
+          <input class="form-cont"
+            type="email"
+            name="email"
+            id="cEmail"
+            placeholder="Email">
+          <label for="email" id="email-error" class="error" aria-live="polite"></label>
+        <input class="form-cont" type="text" name="phone" id="cPhone" placeholder="Phone">
         <textarea class="form-cont"
           rows="5"
           name="message"
+          id="cMessage"
           placeholder="Message"
           data-rule-required="true"
           data-msg-required="Please add a message."
           data-msg-email="Please enter your message."
           ></textarea>
-        <button>SUBMIT</button>
+          <label for="message" id="message-error" class="error" aria-live="polite"></label>
+        <button id="submit" type="submit">SUBMIT</button>
       </form>
     </div>
     </div>
